@@ -24,6 +24,9 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        // Prevent large titles for the DetailViewController
+        navigationItem.largeTitleDisplayMode = .never
+        
         /// Configure the labels
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview

@@ -66,6 +66,21 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
 
         fetchMovies()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    // Unselect the row when returning from the DetailViewController
+    override func viewWillAppear(_ animated: Bool) {
+        /// It is customary to call the overridden method on `super` any time you override a method
+        super.viewWillAppear(animated)
+        
+        /// Get the indexPath for the selected row
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            
+            // Deselect the currently selected row
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
     }
     
     /// The `prepare(for:sender:)` function will allow us to pass data from the row of the TableView to the DetailViewController
